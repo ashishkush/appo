@@ -92,6 +92,7 @@ echo "</select><br />";
 
 //++++++++++++++++++++++++++++++++Specilaztion Drop Down+++++++++++++++++++++++++++++++++
 echo "Specilization:  <select name='specilaziation' onchange=\"reload3(this.form)\"> <option value=''>Select one</option>";
+if(isset($spec))  {
 while($speclist = mysql_fetch_array($spec)) {
 if($speclist['spid']==@$cat3)
 	{
@@ -101,13 +102,15 @@ if($speclist['spid']==@$cat3)
 	echo  "<option value='$speclist[spid]'>$speclist[spname]</option>";
 		}  
 }	
+}
 echo "</select><br />";
 //++++++++++++++++++++++++++++++++End Specilaztion Drop Down++++++++++++++++++++++++++++++
 
 
 //++++++++++++++++++++++++++++++++Doctor Drop Down++++++++++++++++++++++++++++++++++++++++
 echo "Doctor: <select name='docl' onchange=\"reload4(this.form)\"><option value=''>Select one</option>";  
-while($doclist = mysql_fetch_array($doc)) { 
+if(isset($spec))  {
+while($doclist = mysql_fetch_array($doc)) {
 if($doclist['loginid']==@$cat4)
 	{
 	echo  "<option selected value='$doclist[loginid]'>$doclist[name]</option>";
@@ -115,6 +118,7 @@ if($doclist['loginid']==@$cat4)
 		{  
 	echo  "<option value='$doclist[loginid]'>$doclist[name]</option>";
 	}
+}
 }
 echo "</select><br />";
 //++++++++++++++++++++++++++++++++End doctor Drop Down+++++++++++++++++++++++++++++++++++++
@@ -215,9 +219,11 @@ $comparedatetime = mysql_query("select time from patient where doctorid = '$cat4
 }
 	
 	echo "Select Time <select name='time' ><option value=''>Select one</option>";  
+	if(isset($spec))  {
 	foreach($difftime as $value ){
 	echo  "<option value='$value'>$value</option>";  
 		} 
+	}
 	echo "</select>";
 	
 
