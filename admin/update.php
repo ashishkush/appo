@@ -1,6 +1,6 @@
 <?php
 include('../include/conf.php');
-$loginid = $_GET['loginid'];
+$loginid = protect($_GET['loginid']);
 
 $result = mysql_query("select loginmaster.id,loginmaster.name,loginmaster.email,loginmaster.password,loginmaster.phone,loginmaster.gender,loginmaster.address,specilisation.spname,doctor.spid,doctor.startoftime,doctor.endoftime,doctor.otherspecilisation, area.id,area.name from loginmaster INNER JOIN doctor on loginmaster.id = doctor.loginid INNER JOIN area on area.id = doctor.areaid INNER JOIN specilisation on doctor.spid = specilisation.id where loginmaster.id = $loginid ")or die(mysql_error());
 if($row = mysql_fetch_array($result)){

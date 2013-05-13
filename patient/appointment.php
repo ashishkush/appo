@@ -5,12 +5,12 @@ include_once("../include/conf.php");
 if(empty($_SESSION['name'])){
 header('location:../patient/index.php');
 }
-$loginid = $_GET['loginid'];
-$doctorid = $_GET['docl'];
+$loginid = protect($_GET['loginid']);
+$doctorid = protect($_GET['docl']);
 //$date = $_GET['date'];
-$time = $_GET['time'];
+$time = protect($_GET['time']);
 
-$originalDate = $_GET['date'];
+$originalDate = protect($_GET['date']);
  
 //$originalDate = "2010-03-21"; 
 $date = date("Y-m-d", strtotime($originalDate)); 
