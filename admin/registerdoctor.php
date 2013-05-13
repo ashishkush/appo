@@ -3,17 +3,17 @@
 
 		include_once("../include/conf.php");
       if(isset($_POST['s'])) {		  
-         $emailid=$_POST['emailid'];
-          $password=$_POST['password'];	
-		  $name=$_POST['name'];	 		  
-          $gender=$_POST['gender'];
-          $phone=$_POST['phone'];
-		  $address=$_POST['address'];
-			$spid=$_POST['specialization'];	
-		  $otherspecialization=$_POST['otherspecialization'];
-		  $areaid=$_POST['area'];
-		  $startoftime=$_POST['startoftime'];
-		  $endoftime=$_POST['endoftime'];
+         $emailid=protect($_POST['emailid']);
+          $password=protect($_POST['password']);	
+		  $name=protect($_POST['name']);	 		  
+          $gender=protect($_POST['gender']);
+          $phone=protect($_POST['phone']);
+		  $address=protect($_POST['address']);
+			$spid=protect($_POST['specialization']);	
+		  $otherspecialization=protect($_POST['otherspecialization']);
+		  $areaid=protect($_POST['area']);
+		  $startoftime=protect($_POST['startoftime']);
+		  $endoftime=protect($_POST['endoftime']);
           
 
     
