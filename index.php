@@ -49,7 +49,7 @@ $areaq = mysql_query("select distinct * from area ")or die(mysql_error());
 //++++++++++++++++++++++++++++++++End of query for first drop down+++++++++++++++++++++++++++++++++++++++++
 
 
-@$cat=$_GET['cat'];  //area id
+@$cat=protect($_GET['cat']);  //area id
 //++++++++++++++++++++++++++++++++Getting the data for specilaziation drop down++++++++++++++++++++++++++++
 if(isset($cat) and strlen($cat) > 0){
 	$spec = mysql_query("select distinct doctor.spid,specilisation.spname from specilisation INNER JOIN doctor on specilisation.id = doctor.spid  where doctor.areaid = $cat ");
@@ -57,7 +57,7 @@ if(isset($cat) and strlen($cat) > 0){
 //++++++++++++++++++++++++++++++++End of query for specilaziation drop down+++++++++++++++++++++++++++++++++++++		
 		
 		
-@$cat3=$_GET['cat3'];  //spid
+@$cat3=protect($_GET['cat3']);  //spid
 //++++++++++++++++++++++++++++++++Getting the data for doctor drop down+++++++++++++++++++++++++++++++++++++++++
 if(isset($cat3) and strlen($cat3) > 0){
 $doc = mysql_query("select distinct loginmaster.name,doctor.loginid from loginmaster INNER JOIN doctor on loginmaster.id = doctor.loginid  where doctor.spid = $cat3 ");
@@ -65,7 +65,7 @@ $doc = mysql_query("select distinct loginmaster.name,doctor.loginid from loginma
 //++++++++++++++++++++++++++++++++End of query for doctor drop down++++++++++++++++++++++
 
 
-@$cat4 = $_GET['cat4'];  //docid
+@$cat4 = protect($_GET['cat4']);  //docid
 if(isset($cat4) and strlen($cat4) > 0){
 //$time = mysql_query("select doctor.startoftime,doctor.endoftime from loginmaster INNER JOIN doctor on loginmaster.id = doctor.loginid  where doctor.spid = $cat3 ");
 $time = mysql_query("select startoftime,endoftime from doctor where loginid = $cat4 ");
@@ -135,7 +135,7 @@ $ddatomorrow = date("D, M jS, Y", strtotime($datomorrow. '+ 1 day'));
 }
 
 //++++++++++++++++++++++++++++++++Date drop down++++++++++++++++++++++++++++++++++++++++++++
-	@$cat5 = $_GET['cat5'];
+	@$cat5 = protect($_GET['cat5']);
 	
 	if($cat4 == null){
 		echo "Select Date <select name='date'>";		
