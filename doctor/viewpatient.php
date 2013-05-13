@@ -1,6 +1,6 @@
 <?php
 include('../include/conf.php');
-@$id = $_GET['id'];
+@$id = protect($_GET['id']);
 
 
 	$timezone = new DateTimeZone("Asia/Kolkata" );

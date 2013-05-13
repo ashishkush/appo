@@ -2,8 +2,8 @@
 include('include/conf.php');
 $error = '';
 if(!empty($_POST['Submit'])){
-	$emailid = $_POST['email'];
-	$password = $_POST['password'];
+	$emailid = protect($_POST['email']);
+	$password = protect($_POST['password']);
 	if($emailid==''){
 		$error .= 'please enter email id<br>';
 	}

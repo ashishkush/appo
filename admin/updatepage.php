@@ -1,20 +1,20 @@
 <?php 
 include('../include/conf.php');
-$loginid = $_POST['loginid'];
-$spid = $_POST['spid'];
-$areaid = $_POST['areaid'];
+$loginid = protect($_POST['loginid']);
+$spid = protect($_POST['spid']);
+$areaid = protect($_POST['areaid']);
 
-$name = $_POST['name'];
-$email = $_POST['email'];
-$password = $_POST['password'];
-$phone = $_POST['phone'];
-$gender = $_POST['gender'];
-$specilisation = $_POST['specilisation'];
-$otherspecilisation = $_POST['otherspecilisation'];
-$startoftime = $_POST['startoftime'];
-$endoftime = $_POST['endoftime'];
-$area = $_POST['area'];
-$address = $_POST['address'];
+$name = protect($_POST['name']);
+$email = protect($_POST['email']);
+$password = protect($_POST['password']);
+$phone = protect($_POST['phone']);
+$gender = protect($_POST['gender']);
+$specilisation = protect($_POST['specilisation']);
+$otherspecilisation = protect($_POST['otherspecilisation']);
+$startoftime = protect($_POST['startoftime']);
+$endoftime = protect($_POST['endoftime']);
+$area = protect($_POST['area']);
+$address = protect($_POST['address']);
 
 mysql_query("UPDATE loginmaster SET name = '$name', email = '$email',password = '$password', phone = '$phone', gender = '$gender', address = '$address' WHERE loginmaster.id = '$loginid'")or die(mysql_error());
 
